@@ -1,30 +1,46 @@
-# React Interview Project
-This is a small project for a react interview.
+# Vue Interview Project
+These are small projects for a Vue interview at Africave.
 
 ## Goal
-Create a React application that retrieves and displays the user repositories and organisations in Github.
+- Project Alpha - Create a Vue(Nuxt) application that retrieves and displays the leaders on wakatime public leaderboard.
+- Project Beta - Create a Vue(Nuxt) application that retrieves and displays a list and description of nearest doctors within the user's current location.
+- Project Gamma - Create a Vue(Nuxt) application that retrieves and displays competitions, matches and standings from a football data and statistics
 
 ## UX/UI
-Up to you, probably it should include an input to enter the username, one area to display the repositories of the user and another area to display the organisations
+Up to you,
+Project Alpha - probably it should
+ - include a layout containing a list of users ranked by coding activity in descending order (with names, total hours code, daily average and languages).
+ - include a functional search input.
+ - include a profile view page, containing user's details, virtually represented coding activities, etc.
+
+Project Beta - probably it should
+ - include a layout containing a list of nearest doctors within a user location (with some important information).
+ - include a functional search input, with several search options/parameters.
+ - include a doctor's view page.
+
+Project Gamma - probably it should
+ - include a layout containing a list of all competitions,
+ - include a page that displays standings and matches data of each competition.
 
 ## Retrieving data
-To make things easier we have commited a github-api.js file with the REST APIs needed to retrieve the information.
+- Project Alpha - [Wakatime Api](https://wakatime.com/developers).
+- Project Beta - [BetterDoctor Api](https://developer.betterdoctor.com/).
+- Project Gamma - [Football-Data Api](http://api.football-data.org/index).
 
 ## Bootstrapping the project
-Up to you, we recommend [create-react-app](https://github.com/facebook/create-react-app).
+Up to you, we recommend [create-nuxt-app](https://github.com/nuxt/create-nuxt-app).
 
 ## Submitting the solution
 Copy this repository to a repository on your name and add the solution there. It should be clear how to build and run the project locally.
 
 ## Bonus (don't need to be in the below specific order)
 * Use ES6 syntax including arrow functions, destructuring and async/await
-* Adding types with Flow or Typescript
 * Adding a spinner when information is loading
 * Deal with errors coming from the backend
 * Some sort of Unit Test
-* Some sort of Integration Test
-* Having a nice UI using a components library (Bootstrap?)
+* Having a nice UI using a components library (Vuetify?, Bootstrap?)
 * Divide the application in different pages and use a router
 * Adding state management
 * Show common tools used for you daily development environment (linters, code formatter, git workflow, docker and so on)
+* Maintain a clean project structure
 * Deploy the project somewhere
