@@ -1,55 +1,58 @@
 <template>
   <div>
-    <Nuxt />
+    <div class="home">
+      <div class="header-section">
+        <div class="container">
+          <div class="d-flex flex-column align-items-center">
+            <div class="logo">
+              <img
+                src="~/assets/images/logo.png"
+                alt=""
+                class="img-fluid"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container px-0">
+        <Nuxt />
+      </div>
+
+      <div class="mt-5">
+        <p class="text-secondary text-center">
+          Built by
+          <a
+            href="https://twitter.com/i_santiag0"
+            class="fancy-link"
+          >
+            Temitope Ilesanmi
+          </a>
+        </p>
+
+        <p class="text-center small">
+          Credits:
+          <a
+            href="https://www.football-data.org"
+            class="fancy-link"
+          >Football data API</a>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+<style lang="scss">
+@import '~/assets/styles.scss';
+#nav {
+  padding: 30px;
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
+  a {
+    font-weight: bold;
+    color: #2c3e50;
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>
