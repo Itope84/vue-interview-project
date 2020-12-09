@@ -1,5 +1,10 @@
 # gamma-ball
 
+[https://gamma-ball.netlify.app/](https://gamma-ball.netlify.app/)
+
+In completion to the Vue interview project, __gamma-ball__ uses [Football data API](https://www.football-data.org/
+) to present a list of competitions, their fixtures and results as well as their table. the project is scaffolded with `create-nuxt-app` and enforces the airbnb coding standard.
+
 ## Build Setup
 
 ```bash
