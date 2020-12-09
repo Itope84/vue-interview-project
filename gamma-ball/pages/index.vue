@@ -4,32 +4,38 @@
 
     <div class="row">
       <loading v-if="!competitions.length"></loading>
+
       <div
         class="col-sm-6 mb-4"
         v-for="competition in competitions"
         :key="competition.id"
-        @click="openCompetition(competition)"
       >
-        <div class="px-4 py-4 shadow-lg rounded-sm competition">
-          <div class="competition--emblem">
-            <img
-              :src="
+        <nuxt-link
+          :to="`/competitions/${competition.id}`"
+          class="competition--link"
+        >
+          <div class="px-4 py-4 shadow-lg rounded-sm competition">
+            <div class="competition--emblem">
+              <img
+                :src="
                     competition.emblemUrl ||
                       emblems[competition.code] ||
                       emblems['default']
                   "
-              alt=""
-              class="img-fluid"
-            />
+                alt=""
+                class="img-fluid"
+              />
+            </div>
+            <div class="competition--details">
+              <h4 class="h5 mb-1">
+                <strong>{{ competition.name }}</strong>
+              </h4>
+              <span class="small h6">{{ competition.area.name }}</span>
+            </div>
           </div>
-          <div class="competition--details">
-            <h4 class="h5 mb-1">
-              <strong>{{ competition.name }}</strong>
-            </h4>
-            <span class="small h6">{{ competition.area.name }}</span>
-          </div>
-        </div>
+        </nuxt-link>
       </div>
+
     </div>
   </div>
 </template>
@@ -56,19 +62,6 @@ export default {
       competitions: [],
       emblems,
     };
-  },
-
-  methods: {
-    openCompetition(competition) {
-      this.$router.push({
-        path: `competitions/${competition.id}`,
-        params: {
-          competition_id: competition.id,
-          name: competition.name,
-          competition,
-        },
-      });
-    },
   },
 
   mounted() {

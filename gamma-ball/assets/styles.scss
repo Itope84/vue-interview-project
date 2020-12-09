@@ -66,10 +66,17 @@ body, p, span, div {
   border-radius: 10px;
   display: flex;
   color: lighten($color: #000000, $amount: 30);
+
   &:hover {
     box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.175) !important;
     color: lighten($color: #000000, $amount: 15);
     cursor: pointer;
+  }
+
+  &--link {
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   &--emblem {
