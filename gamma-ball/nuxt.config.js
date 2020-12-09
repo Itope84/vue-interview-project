@@ -1,10 +1,10 @@
-import ApiService from './services/api-service';
+// import ApiService from './services/api-service';
 
-function dynamicRoutes() {
-  return ApiService.getCompetitions().then((response) => {
-    (response.competitions || []).map((competition) => `/competitions/${competition.id}`);
-  });
-}
+// function dynamicRoutes() {
+//   return ApiService.getCompetitions().then((response) => {
+//     (response.competitions || []).map((competition) => `/competitions/${competition.id}`);
+//   });
+// }
 
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
@@ -34,7 +34,7 @@ export default {
   components: true,
 
   generate: {
-    routes: dynamicRoutes,
+    // routes: dynamicRoutes,
   },
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
@@ -45,7 +45,6 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/bootstrap
-    'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
