@@ -162,8 +162,9 @@ export default {
         return;
       }
 
-      ApiService.getCompetition(this.$route.params.competition_id).then((response) => {
+      ApiService.getCompetition(this.$route.params.id).then((response) => {
         this.competition = response;
+        this.$emit('update-name', this.competition.name);
         this.matchday = this.competition.currentSeason.currentMatchday;
       });
     },
@@ -171,7 +172,7 @@ export default {
     fetchMatches() {
       // fetch matches for the current season
       ApiService.getMatches(
-        this.$route.params.competition_id,
+        this.$route.params.id,
         this.season || this.seasons[0] || new Date().getFullYear(),
         this.matchday,
       ).then((response) => {

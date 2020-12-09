@@ -1,3 +1,11 @@
+import ApiService from './services/api-service';
+
+function dynamicRoutes() {
+  return ApiService.getCompetitions().then((response) => {
+    (response.competitions || []).map((competition) => `/competitions/${competition.id}`);
+  });
+}
+
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
@@ -25,6 +33,9 @@ export default {
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
+  generate: {
+    routes: dynamicRoutes,
+  },
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/eslint

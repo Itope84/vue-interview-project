@@ -61,7 +61,7 @@ export default {
   methods: {
     openCompetition(competition) {
       this.$router.push({
-        name: 'competition',
+        path: `competitions/${competition.id}`,
         params: {
           competition_id: competition.id,
           name: competition.name,

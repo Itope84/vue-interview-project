@@ -66,7 +66,8 @@ export default {
     };
   },
   mounted() {
-    ApiService.getStandings(this.$route.params.competition_id).then((response) => {
+    ApiService.getStandings(this.$route.params.id).then((response) => {
+      this.$emit('update-name', response.competition.name);
       this.standings = response.standings;
     });
   },
