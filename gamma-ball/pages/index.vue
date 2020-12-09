@@ -1,63 +1,84 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">gamma-ball</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="page-body border-none card py-4">
+    <h4><strong>All Competitions</strong></h4>
+
+    <div class="row">
+      <loading v-if="!competitions.length"></loading>
+      <div
+        class="col-sm-6 mb-4"
+        v-for="competition in competitions"
+        :key="competition.id"
+        @click="openCompetition(competition)"
+      >
+        <div class="px-4 py-4 shadow-lg rounded-sm competition">
+          <div class="competition--emblem">
+            <img
+              :src="
+                    competition.emblemUrl ||
+                      emblems[competition.code] ||
+                      emblems['default']
+                  "
+              alt=""
+              class="img-fluid"
+            />
+          </div>
+          <div class="competition--details">
+            <h4 class="h5 mb-1">
+              <strong>{{ competition.name }}</strong>
+            </h4>
+            <span class="small h6">{{ competition.area.name }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+// @ is an alias to /src
+import ApiService from '@/services/api-service';
+import emblems from '@/utils/emblems';
+import Loading from '@/components/Loading.vue';
+
+// const c_response = {
+//   count: 10,
+//   filters: { areas: [2077], plan: "TIER_ONE" }
+// };
+
+export default {
+  name: 'home',
+  components: {
+    Loading,
+  },
+
+  data() {
+    return {
+      competitions: [],
+      emblems,
+    };
+  },
+
+  methods: {
+    openCompetition(competition) {
+      this.$router.push({
+        name: 'competition',
+        params: {
+          competition_id: competition.id,
+          name: competition.name,
+          competition,
+        },
+      });
+    },
+  },
+
+  mounted() {
+    ApiService.axios = this.$axios;
+    ApiService.getCompetitions().then((response) => {
+      this.competitions = response.competitions || [];
+    });
+  },
+};
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
